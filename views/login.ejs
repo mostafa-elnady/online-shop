@@ -1,0 +1,57 @@
+<%- include('parts/header') %>
+<%- include('parts/navbar') %>
+
+<div class="container text-center">
+
+  <form class="px-4 py-3" action="/login" method="POST">
+
+    <div class="form-group">
+
+      <input type="email" name="email" class="form-control" id="exampleDropdownFormPassword1" placeholder="Email">
+    </div>
+    <% let emailErrors = validationErrors.find(err=>err.param === 'email') %>
+    <% if(emailErrors) { %>
+      <p style="width: 350px;" class="alert alert-danger">
+       <%= emailErrors.msg %>
+      </p>
+
+      <% } %>
+    <div class="form-group">
+
+      <input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1"
+        placeholder="Password">
+    </div>
+
+    <% let passwordErrors = validationErrors.find(err=>err.param === 'email') %>
+    <% if(passwordErrors) { %>
+      <p style="width: 350px;" class="alert alert-danger">
+       <%= passwordErrors.msg %>
+      </p>
+
+      <% } %>
+
+
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+  <% if( FlashError) { %>
+    <p style="width: 350px;" class="alert alert-danger">
+      <%= FlashError %>
+     </p>
+
+     <% } %>
+
+  <div>
+    Create New Account ? <a href="/signup">Signup</a>
+
+  </div>
+
+
+
+  <div class="dropdown-divider"></div>
+
+</div>
+
+
+
+
+<%- include('parts/footer') %>

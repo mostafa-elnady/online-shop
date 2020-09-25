@@ -1,0 +1,72 @@
+<%- include('parts/header') %>
+<%- include('parts/navbar') %>
+
+<div class="container text-center">
+
+    <form class="px-4 py-3" action="signup" method="POST">
+        <div class="form-group">
+     
+          <input type="text" name="username" class="form-control" id="exampleDropdownFormEmail1" placeholder="Username">
+        </div>
+        <% let usernameError = validationErrors.find(err=>err.param === 'username')  %>
+        <% if(usernameError) { %>
+
+          <p style="width: 350px;" class="alert alert-danger">
+            <%= usernameError.msg %>
+          </p>
+
+          <% } %>
+ 
+        <div class="form-group">
+         
+          <input type="email" name="email" class="form-control" id="exampleDropdownFormPassword1" placeholder="Email">
+        </div>
+        <% let emailError = validationErrors.find(err=>err.param === 'email')  %>
+        <% if(emailError) { %>
+
+          <p style="width: 350px;" class="alert alert-danger">
+            <%= emailError.msg %>
+          </p>
+
+          <% } %>
+        <div class="form-group">
+         
+            <input type="password" name="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+          </div>
+          <% let passwordError = validationErrors.find(err=>err.param === 'password')  %>
+          <% if(passwordError) { %>
+  
+            <p style="width: 350px;" class="alert alert-danger">
+              <%= passwordError.msg %>
+            </p>
+  
+            <% } %>
+          <div class="form-group">
+         
+            <input type="password" name="confirmPassworfd" class="form-control" id="exampleDropdownFormPassword1" placeholder="Confirm Password">
+          </div>
+          <% let confirmPassworfdError = validationErrors.find(err=>err.param === 'confirmPassworfd')  %>
+          <% if(confirmPassworfdError) { %>
+  
+            <p style="width: 350px;" class="alert alert-danger">
+              <%= confirmPassworfdError.msg %>
+            </p>
+  
+            <% } %>
+       
+        <button type="submit" class="btn btn-primary">Create Account</button>
+      </form>
+     
+      <div>
+        Already Have Account ? <a href="/login">login</a>
+
+      </div>
+      
+      <div class="dropdown-divider"></div>
+
+</div>
+
+
+
+
+<%- include('parts/footer') %>
